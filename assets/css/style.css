@@ -1,0 +1,454 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--dark: #070707;
+	--sizeindex: calc(1vw + 1vh);
+	--transition: .75s cubic-bezier(.2, .6, 0, 1);
+}
+
+@font-face {
+	font-family: raleway_m;
+	src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: raleway_m;
+	src: url(../fonts/raleway-v22-cyrillic-900.woff2);
+	font-weight: 900;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	font-family: raleway_m, sans-serif;
+	overflow: hidden;
+	line-height: 1.3;
+	background-image: url(../images/tank.jpg);
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.5);
+	background-repeat: no-repeat;
+	background-blend-mode: multiply;
+}
+
+.container {
+	width: 800px;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 40rem;
+	margin-top: 17vh;
+}
+
+/* Слайдер */
+
+.slider__track {
+	display: flex;
+	transition: .2s;
+}
+
+.slider__item {
+	max-height: 75vh;
+	overflow: hidden;
+	transition: transform var(--transition), box-shadow var(--transition);
+	cursor: pointer;
+	max-width: 100%;
+	background-size: cover;
+}
+
+.slider__img {
+	width: 400px;
+	height: 600px;
+}
+
+.slider_bg {
+	z-index: 0;
+	transform: rotate(-20deg) !important;
+	top: -90vh;
+	left: -10vh;
+	opacity: 0.15;
+	filter: blur(120px) saturate(10);
+}
+
+.slider_bg .slider__item {
+	max-height: 100vh;
+}
+
+.slider__item.opened {
+	z-index: 2;
+	transform: rotate(-15deg) scale(1.43);
+	box-shadow: rgb(0 0 0 / .75) 0 0 0 10000px;
+}
+
+.glide__arrow {
+	top: 105% !important;
+}
+
+.glide__arrow--left {
+	left: 20em !important;
+}
+
+.glide__arrow--right {
+	right: 20em !important;
+}
+
+/* Заголовок на главной станице */
+
+.description {
+	width: 100%;
+	position: absolute;
+	font-size: calc(var(--sizeindex) * .8);
+	top: 20vh;
+	left: 5vw;
+	max-width: 27vw;
+	transition: opacity var(--transition), transform var(--transition);
+	margin-top: 100px;
+}
+
+.logo {
+	margin-bottom: 20px;
+	font-size: calc(var(--sizeindex) * 3);
+	font-weight: 900;
+	line-height: 1;
+	display: block;
+	background: linear-gradient(45deg, rgb(207, 6, 6), rgb(196, 193, 18), rgb(129, 4, 2));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.logo--center {
+	margin-left: 34px;
+}
+
+.description p {
+	font-size: 17px;
+	line-height: 1.2;
+	transition: transform var(--transition);
+}
+
+.description.hidden {
+	opacity: 0;
+	transform: translateY(5vh);
+}
+
+.description.hidden p {
+	transform: translateY(2vh);
+}
+
+/* Модельное окно */
+
+.modal {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	gap: 20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	background-image: url(../images/tank.jpg);
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-blend-mode: multiply;
+	-webkit-transition: visibility 200ms ease-in;
+	-moz-transition: visibility 200ms ease-in;
+	transition: visibility 200ms ease-in;
+
+}
+
+.modal__close {
+	border: 0;
+	cursor: pointer;
+	opacity: .5;
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+	transition: transform .2s linear, opacity .2s linear;
+
+}
+
+.modal__close:hover {
+	transform: rotate(90deg);
+	opacity: 1;
+}
+
+.modal__left {
+	width: 37%;
+	margin: 0;
+	margin-right: 15px;
+	text-align: left;
+}
+
+.modal__img {
+	width: 90%;
+	border-radius: 5%;
+
+}
+
+.modal__right {
+	display: block;
+	width: 63%;
+	padding: 20px;
+}
+
+.modal__awards {
+	margin-bottom: 20px;
+	font-size: 40px;
+	background: linear-gradient(45deg, rgb(238, 0, 0), rgb(207, 221, 8), rgb(194, 2, 2), rgb(129, 110, 2));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+
+.name {
+	margin-bottom: 20px;
+	font-size: 48px;
+	text-align: center;
+	background: linear-gradient(45deg, rgb(238, 0, 0), rgb(207, 221, 8), rgb(194, 2, 2), rgb(129, 110, 2));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+}
+
+.context {
+	font-size: 18px;
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+.awards__item {
+	font-size: 18px;
+}
+
+.modal-hidden {
+	visibility: hidden;
+}
+
+.soundbutton {
+	width: 44px;
+	position: fixed;
+	bottom: 5vh;
+	right: 5vw;
+	cursor: pointer;
+	transition: 0.25 ease;
+}
+
+.soundbutton.paused {
+	opacity: 0.5;
+}
+
+@media (max-width:1360px) {
+
+	.container {
+		margin-left: 28rem;
+		margin-top: 10vh;
+	}
+
+	.modal {
+		overflow: scroll;
+	}
+}
+@media (max-height:700px) {
+
+	.container {
+		margin-left: 28rem;
+		margin-top: 10vh;
+	}
+
+	.modal {
+		overflow: scroll;
+	}
+}
+
+
+@media (max-width:1024px) {
+	body {
+		overflow-y: visible;
+	}
+
+	.description {
+		width: 100%;
+		top: 0;
+		margin-top: 0;
+		max-width: 76vh;
+	}
+
+	.logo{
+		margin-bottom: 10px;
+	}
+
+	.container {
+		margin-left: 2rem;
+		margin-top: 27vh;
+	}
+
+	.slider__img {
+		width: 350px;
+		height: 500px;
+	}
+
+	.modal {
+		overflow: scroll;
+	}
+
+	.modal__left {
+		height: 72%;
+		width: 84%;
+	}
+
+	.modal__img {
+		height: 115%;
+		width: 96%;
+	}
+
+	.modal__right {
+		width: 95%;
+		padding: 0 15px 0 0;
+	}
+
+	.name {
+		font-size: 37px;
+	}
+
+	.context {
+		font-size: 17px;
+	}
+
+	.modal__awards {
+		font-size: 36px;
+	}
+
+	.awards__item {
+		font-size: 16px;
+	}
+}
+
+@media (max-width:691px) {
+  .description {
+		max-width: 58vh;
+		margin: 0 auto;
+		text-align: center;
+		padding: 15px;
+  }
+
+	.slider__img {
+		width: 250px;
+		height: 390px;
+	}
+  
+	.modal {
+		padding: 35px;
+	}
+
+	.modal__img {
+		height: 115%;
+		width: 119%;
+	}
+
+	.modal__right {
+		width: 95%;
+		padding: 0 0 0 33px;
+	}
+
+	.name {
+		font-size: 31px;
+	}
+
+	.context {
+		font-size: 16px;
+	}
+
+	.modal__awards {
+		font-size: 31px;
+	}
+
+	.awards__item {
+		font-size: 16px;
+	}
+
+	.glide__slide--active {
+		margin-left: 57px;
+		margin-right: -72px;
+	}
+
+}
+
+@media (max-width:500px) {
+	.container {
+		margin-left: 1rem;
+		margin-top: 24vh;
+	}
+    .description {
+			max-width: 44vh;
+			padding: 5px;
+		}
+
+		.modal {
+			padding: 0px;
+			display: block;
+		}
+
+		.modal__close {
+			top: 13px;
+			right: 13px;
+		}
+
+		.modal__img {
+			height: 100%;
+			width: 100%;
+		}
+
+		.modal__left {
+			height: 35%;
+			width: 50%;
+			margin: 20px auto;
+		}
+
+		.modal__right {
+			margin-bottom: 20px;
+		}
+
+		.name {
+			padding-top: 10px;
+			font-size: 28px;
+		}
+
+		.logo {
+			text-align: center;
+			margin-bottom: 0;
+		}
+
+		.logo--center {
+			margin-left: 0px;
+		}
+
+		.glide__slide {
+			margin-left: 17px !important;
+			margin-bottom: 10px;
+			margin-top: 20px;
+		}
+		.glide__arrow--left {
+			left: 4em !important;
+		}
+
+		.glide__arrow--right {
+			right: 37em !important;
+		}
+
+		.soundbutton {
+			left: 4vw;
+			right: 0;
+		}
+}
+
+
+
+
